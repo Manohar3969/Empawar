@@ -15,7 +15,7 @@ public class OrderItemController {
     private OrderItemService orderItemService;
 
     @GetMapping
-    public List<OrderItem> getAllAddresses() {
+    public List<OrderItem> getAllOrderItems() {
         return orderItemService.getAllOrderItems();
     }
 
