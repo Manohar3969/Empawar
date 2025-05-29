@@ -34,8 +34,6 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) {
-        System.out.println("User Name: " + authRequest.getUsername());
-
         if(authRequest.getUsername() == null)
         {
            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User Name is Null");
