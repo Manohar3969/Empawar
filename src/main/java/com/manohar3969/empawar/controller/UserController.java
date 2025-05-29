@@ -28,15 +28,31 @@ public class UserController {
     }
 
     @PostMapping
-    public User createProduct(@RequestBody User user) {
-        return userService.createProduct(user);
+    public ResponseEntity<?> createProduct(@RequestBody User user) {
+
+        Optional<User> userEmail = userRepository.findByUserEmailID(user.getUserEmailID());
+
+        if (user.getUserEmailID().isEmpty() || user.getUserEmailID() == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User Email ID is Empty");
+        } else if (user.getUserFirstName() == null || user.getUserFirstName().isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User Name is Empty");
+        } else if (user.getUserMobileNumber() == null || user.getUserMobileNumber().isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User Mobile Number is Empty");
+        } else if (user.getUserPassword() == null || user.getUserPassword().isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User Password is Empty");
+        } else if (user.getUserRole() == null || user.getUserRole().isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User Role is Empty");
+        } else if(userEmail.isPresent()){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User Email ID already exists");
+        }else {
+            return ResponseEntity.ok(userService.createProduct(user));
+        }
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) {
-        if(authRequest.getUsername() == null)
-        {
-           return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User Name is Null");
+        if (authRequest.getUsername() == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User Name is Null");
         } else {
             Optional<User> userOpt = userRepository.findByUserEmailID(authRequest.getUsername());
 
