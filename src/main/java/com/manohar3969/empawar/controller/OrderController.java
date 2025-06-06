@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/orders")
@@ -22,5 +23,10 @@ public class OrderController {
     @PostMapping
     public Order createProduct(@RequestBody Order order) {
         return orderService.createProduct(order);
+    }
+
+    @GetMapping("/{orderId}")
+    public Optional<Order> getOrderById(@PathVariable String orderId){
+        return orderService.getOrderById(orderId);
     }
 }

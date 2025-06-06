@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/address")
@@ -22,6 +23,11 @@ public class AddressController {
     @PostMapping
     public Address createProduct(@RequestBody Address address) {
         return addressService.createProduct(address);
+    }
+
+    @GetMapping("users/{userId}")
+    public Optional<Address> getAddressForUser(@PathVariable String userId) {
+        return addressService.getAddressByUserId(userId);
     }
 
 }

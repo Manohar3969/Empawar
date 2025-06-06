@@ -20,4 +20,8 @@ public class OrderItemService {
     public OrderItem createProduct(OrderItem orderItem) {
         return orderItemRepository.save(orderItem);
     }
+
+    public List<OrderItem> getOrderItemsByOrderId(String orderId) {
+        return orderItemRepository.findByOrderId(orderId);
+    }
 }

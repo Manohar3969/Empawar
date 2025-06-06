@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AddressService {
@@ -19,5 +20,9 @@ public class AddressService {
 
     public Address createProduct(Address address) {
         return addressRepository.save(address);
+    }
+
+    public Optional<Address> getAddressByUserId(String userId){
+        return addressRepository.findByUserId(userId);
     }
 }
