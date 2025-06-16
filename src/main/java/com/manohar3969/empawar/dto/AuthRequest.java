@@ -3,7 +3,6 @@ package com.manohar3969.empawar.dto;
 import lombok.Data;
 
 
-
 @Data
 public class AuthRequest {
     private String username;

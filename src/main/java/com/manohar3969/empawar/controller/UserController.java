@@ -42,9 +42,9 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User Password is Empty");
         } else if (user.getUserRole() == null || user.getUserRole().isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User Role is Empty");
-        } else if(userEmail.isPresent()){
+        } else if (userEmail.isPresent()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User Email ID already exists");
-        }else {
+        } else {
             return ResponseEntity.ok(userService.createProduct(user));
         }
     }

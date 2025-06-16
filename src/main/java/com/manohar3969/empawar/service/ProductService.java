@@ -22,11 +22,11 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public Optional<Product> findProductById(String productId){
+    public Optional<Product> findProductById(String productId) {
         return productRepository.findById(productId);
     }
 
-    public List<Product> findProductByCategory(String productCategory){
+    public List<Product> findProductByCategory(String productCategory) {
         return productRepository.findByProductCategory(productCategory);
     }
 }

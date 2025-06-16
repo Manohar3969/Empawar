@@ -26,7 +26,7 @@ public class OrderController {
     }
 
     @GetMapping("/{orderId}")
-    public Optional<Order> getOrderById(@PathVariable String orderId){
+    public Optional<Order> getOrderById(@PathVariable String orderId) {
         return orderService.getOrderById(orderId);
     }
 }
