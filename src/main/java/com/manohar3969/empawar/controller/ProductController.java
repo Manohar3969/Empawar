@@ -1,14 +1,16 @@
 package com.manohar3969.empawar.controller;
 
 import com.manohar3969.empawar.model.Product;
+import com.manohar3969.empawar.service.ImageUploadService;
 import com.manohar3969.empawar.service.ProductService;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,15 +22,24 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+    @Autowired
+    private ImageUploadService imageUploadService;
 
     @GetMapping
     public List<Product> getAllProducts() {
         return productService.getAllProducts();
     }
 
-    @PostMapping
-    public Product createProduct(@RequestBody @Valid Product product) {
-        return productService.createProduct(product);
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String createProduct(@RequestPart("product") Product product, @RequestPart("file") MultipartFile file) {
+        try {
+            product.setProductImage(imageUploadService.uploadImage(file));
+            productService.createProduct(product);
+            return "Product Added Successfully";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Failed to Add Product! + " + e.getMessage();
+        }
     }
 
     @GetMapping("/id/{productId}")

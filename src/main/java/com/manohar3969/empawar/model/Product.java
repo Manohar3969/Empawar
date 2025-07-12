@@ -31,6 +31,16 @@ public class Product {
     @Min(value = 0, message = "Product Stock should be greater than or equal to 1")
     private int productStock;
 
+    private String productImage;
+
+    public String getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
+    }
+
     public String getProductId() {
         return productId;
     }
