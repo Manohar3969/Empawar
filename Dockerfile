@@ -5,7 +5,7 @@ FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /empawar
 
 # Copy the built JAR file into the container
-COPY target/empawar-0.0.1-SNAPSHOT.jar empawar.jar
+COPY target/*.jar empawar.jar
 
 # Expose the port your Spring Boot app listens on
 EXPOSE 8080
