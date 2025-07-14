@@ -1,14 +1,12 @@
-# Use official lightweight JDK base image
+# Stage 1: Build the JAR using Maven
+FROM maven:3.9.6-eclipse-temurin-17 AS builder
+WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
+
+# Stage 2: Run the Spring Boot app
 FROM eclipse-temurin:17-jdk-alpine
-
-# Set working directory inside the container
-WORKDIR /empawar
-
-# Copy the built JAR file into the container
-COPY target/*.jar empawar.jar
-
-# Expose the port your Spring Boot app listens on
+WORKDIR /app
+COPY --from=builder /app/target/empawar-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
-
-# Run the application
-ENTRYPOINT ["java", "-jar", "empawar.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
