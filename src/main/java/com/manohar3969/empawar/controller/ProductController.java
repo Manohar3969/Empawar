@@ -33,7 +33,7 @@ public class ProductController {
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public String createProduct(@RequestPart("product") Product product, @RequestPart("file") MultipartFile file) {
         try {
-            product.setProductImage(imageUploadService.uploadImage(file));
+//            product.setProductImage(imageUploadService.uploadImage(file));
             productService.createProduct(product);
             return "Product Added Successfully";
         } catch (Exception e) {
