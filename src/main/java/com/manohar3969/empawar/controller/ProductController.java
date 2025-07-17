@@ -51,4 +51,9 @@ public class ProductController {
     public List<Product> getProductByCategory(@PathVariable @NotNull @Size(min = 2) String productCategory) {
         return productService.findProductByCategory(productCategory);
     }
+
+    @GetMapping("/{productName}")
+    public List<Product> getProductByName(@PathVariable @NotNull @Size(min = 2) String productName) {
+        return productService.findProductByNameContaining(productName);
+    }
 }
