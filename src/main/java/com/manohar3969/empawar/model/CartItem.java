@@ -9,21 +9,22 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class CartItem {
     @Id
     private String cartItemID;
-    private String cartItemName;
     private String cartID;
+    private String cartItemName;
     private String cartItemQuantity;
-    private String cartItemPrice;
+    private String cartItemCostPrice;
+    private String cartItemSellingPrice;
     private String cartItemDiscount;
-    private String totalItemsPrice;
+    private String cartItemSize;
+    private String cartItemTotalPrice;
+    private String cartItemImage;
 
-    public CartItem(String cartItemID, String cartItemName, String cartID, String cartItemQuantity, String cartItemPrice, String cartItemDiscount, String totalItemsPrice) {
-        this.cartItemID = cartItemID;
-        this.cartItemName = cartItemName;
+    public String getCartID() {
+        return cartID;
+    }
+
+    public void setCartID(String cartID) {
         this.cartID = cartID;
-        this.cartItemQuantity = cartItemQuantity;
-        this.cartItemPrice = cartItemPrice;
-        this.cartItemDiscount = cartItemDiscount;
-        this.totalItemsPrice = totalItemsPrice;
     }
 
     public String getCartItemID() {
@@ -42,14 +43,6 @@ public class CartItem {
         this.cartItemName = cartItemName;
     }
 
-    public String getCartID() {
-        return cartID;
-    }
-
-    public void setCartID(String cartID) {
-        this.cartID = cartID;
-    }
-
     public String getCartItemQuantity() {
         return cartItemQuantity;
     }
@@ -58,12 +51,20 @@ public class CartItem {
         this.cartItemQuantity = cartItemQuantity;
     }
 
-    public String getCartItemPrice() {
-        return cartItemPrice;
+    public String getCartItemCostPrice() {
+        return cartItemCostPrice;
     }
 
-    public void setCartItemPrice(String cartItemPrice) {
-        this.cartItemPrice = cartItemPrice;
+    public void setCartItemCostPrice(String cartItemCostPrice) {
+        this.cartItemCostPrice = cartItemCostPrice;
+    }
+
+    public String getCartItemSellingPrice() {
+        return cartItemSellingPrice;
+    }
+
+    public void setCartItemSellingPrice(String cartItemSellingPrice) {
+        this.cartItemSellingPrice = cartItemSellingPrice;
     }
 
     public String getCartItemDiscount() {
@@ -74,11 +75,27 @@ public class CartItem {
         this.cartItemDiscount = cartItemDiscount;
     }
 
-    public String getTotalItemsPrice() {
-        return totalItemsPrice;
+    public String getCartItemSize() {
+        return cartItemSize;
     }
 
-    public void setTotalItemsPrice(String totalItemsPrice) {
-        this.totalItemsPrice = totalItemsPrice;
+    public void setCartItemSize(String cartItemSize) {
+        this.cartItemSize = cartItemSize;
+    }
+
+    public String getCartItemTotalPrice() {
+        return cartItemTotalPrice;
+    }
+
+    public void setCartItemTotalPrice(String cartItemTotalPrice) {
+        this.cartItemTotalPrice = cartItemTotalPrice;
+    }
+
+    public String getCartItemImage() {
+        return cartItemImage;
+    }
+
+    public void setCartItemImage(String cartItemImage) {
+        this.cartItemImage = cartItemImage;
     }
 }

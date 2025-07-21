@@ -10,19 +10,14 @@ public class OrderItem {
     @Id
     private String orderItemId;
     private String orderId;
-    private String productID;
+    private String orderItemName;
     private String orderItemQuantity;
+    private String orderItemCostPrice;
+    private String orderItemSellingPrice;
+    private String orderItemDiscount;
     private String orderItemSize;
-    private String orderItemPrice;
-
-    public OrderItem(String orderItemId, String orderId, String productID, String orderItemQuantity, String orderItemSize, String orderItemPrice) {
-        this.orderItemId = orderItemId;
-        this.orderId = orderId;
-        this.productID = productID;
-        this.orderItemQuantity = orderItemQuantity;
-        this.orderItemSize = orderItemSize;
-        this.orderItemPrice = orderItemPrice;
-    }
+    private String orderItemTotalPrice;
+    private String orderItemImage;
 
     public String getOrderItemId() {
         return orderItemId;
@@ -32,20 +27,12 @@ public class OrderItem {
         this.orderItemId = orderItemId;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public String getOrderItemName() {
+        return orderItemName;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
-
-    public String getProductID() {
-        return productID;
-    }
-
-    public void setProductID(String productID) {
-        this.productID = productID;
+    public void setOrderItemName(String orderItemName) {
+        this.orderItemName = orderItemName;
     }
 
     public String getOrderItemQuantity() {
@@ -56,6 +43,30 @@ public class OrderItem {
         this.orderItemQuantity = orderItemQuantity;
     }
 
+    public String getOrderItemCostPrice() {
+        return orderItemCostPrice;
+    }
+
+    public void setOrderItemCostPrice(String orderItemCostPrice) {
+        this.orderItemCostPrice = orderItemCostPrice;
+    }
+
+    public String getOrderItemSellingPrice() {
+        return orderItemSellingPrice;
+    }
+
+    public void setOrderItemSellingPrice(String orderItemSellingPrice) {
+        this.orderItemSellingPrice = orderItemSellingPrice;
+    }
+
+    public String getOrderItemDiscount() {
+        return orderItemDiscount;
+    }
+
+    public void setOrderItemDiscount(String orderItemDiscount) {
+        this.orderItemDiscount = orderItemDiscount;
+    }
+
     public String getOrderItemSize() {
         return orderItemSize;
     }
@@ -64,11 +75,19 @@ public class OrderItem {
         this.orderItemSize = orderItemSize;
     }
 
-    public String getOrderItemPrice() {
-        return orderItemPrice;
+    public String getOrderItemTotalPrice() {
+        return orderItemTotalPrice;
     }
 
-    public void setOrderItemPrice(String orderItemPrice) {
-        this.orderItemPrice = orderItemPrice;
+    public void setOrderItemTotalPrice(String orderItemTotalPrice) {
+        this.orderItemTotalPrice = orderItemTotalPrice;
+    }
+
+    public String getOrderItemImage() {
+        return orderItemImage;
+    }
+
+    public void setOrderItemImage(String orderItemImage) {
+        this.orderItemImage = orderItemImage;
     }
 }
